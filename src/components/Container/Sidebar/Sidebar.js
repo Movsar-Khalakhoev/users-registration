@@ -1,16 +1,22 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styles from './Sidebar.module.sass'
 import Filters from './Filters/Filters'
 import AddUserForm from './addUserForm/addUserForm'
 import {connect} from 'react-redux'
 
-const Sidebar = (props) => {
-  console.log(props)
+const Sidebar = () => {
+  const [component, setComponent] = useState('filters')
   return (
     <div className={styles.sidebar}>
-      <span className={styles.add_user_btn}/>
-      <Filters />
-      <AddUserForm />
+      <span
+        className={styles.add_user_btn}
+        onClick={() => setComponent('add-user-form')}
+      />
+      {
+        component === 'filters'
+          ? <Filters />
+          : <AddUserForm closeForm={() => setComponent('filters')}/>
+      }
     </div>
   )
 }

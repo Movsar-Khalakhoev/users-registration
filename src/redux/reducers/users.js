@@ -1,35 +1,7 @@
-import {UPDATE_PROPERTY} from '../actions/actionTypes'
+import {ADD_USER, UPDATE_PROPERTY, UPDATE_USERS_LIST} from '../actions/actionTypes'
 
 const initialState = {
-  usersList: [
-    {
-      email: 'example@mail.ru',
-      password: 'password',
-      phone: '+77777777777',
-      name: 'Иванов Иван Иванович',
-      status: 'client',
-      create_date: 123,
-      change_date: 34234234
-    },
-    {
-      email: 'example@mail.ru',
-      password: 'password',
-      phone: '+77777777777',
-      name: 'Иванов Иван Иванович',
-      status: 'client',
-      create_date: 34234234,
-      change_date: 34234234
-    },
-    {
-      email: 'example@mail.ru',
-      password: 'password',
-      phone: '+77777777777',
-      name: 'Иванов Иван Иванович',
-      status: 'client',
-      create_date: 34234234,
-      change_date: 34234234
-    }
-  ],
+  usersList: JSON.parse(localStorage.getItem('usersList')) || [],
   properties: {
     email: 'Электронный адрес',
     password: 'Пароль',
@@ -42,14 +14,42 @@ const initialState = {
 }
 
 export default function usersReducer(state = initialState, action) {
+  let usersList
   switch (action.type) {
     case UPDATE_PROPERTY:
-      const usersList = [...state.usersList]
+      usersList = [...state.usersList]
       usersList[action.index] = {
         ...usersList[action.index],
         [action.property]: action.value
       }
-
+      return {
+        ...state,
+        usersList
+      }
+    case UPDATE_USERS_LIST:
+      const filteredUsersList = []
+      const allUsers = localStorage.getItem('usersList')
+      if (!allUsers) return state
+      allUsers.forEach(user => {
+        let isReady = false
+        Object.keys(action.filters).forEach(filter => {
+          if (user[filter] && user[filter].startsWith(action.filters[filter])) {
+            isReady = true
+          }
+        })
+        if (isReady) {
+          filteredUsersList.push(user)
+        }
+      })
+      return {
+        ...state,
+        usersList: filteredUsersList
+      }
+    case ADD_USER:
+      usersList = [...state.usersList]
+      usersList.push(action.user)
+      console.log(usersList)
+      localStorage.setItem('usersList', JSON.stringify(usersList))
       return {
         ...state,
         usersList

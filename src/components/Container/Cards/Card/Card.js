@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import styles from './Card.module.sass'
 import Property from './Property/Property'
 import {connect} from 'react-redux'
-import updateProperty from '../../../../redux/actions/users'
+import {updateProperty} from '../../../../redux/actions/users'
 
 const Card = ({user, properties, cardIndex, updateProperty}) => {
   const [isEditing, setIsEditing] = useState(null)
