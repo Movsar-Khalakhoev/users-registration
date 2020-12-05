@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/style.css"">
+	<title>Учет пользователей</title>
+</head>
+<body>
+	<div class="container">
+		<div class="sidebar">
+			<span class="sidebar__add-user-btn"></span>
+			<div class="filters">
+				<select name="filters__select" id="filters__select" class="filters__select">
+					<option value="property1">Свойство1</option>
+					<option value="property2">Свойство2</option>
+					<option value="property3">Свойство3</option>
+				</select>
+				<div class="filters__active">
+					<div class="filters__property">
+						<label for="property-1" class="filters__property-label">Свойство1:</label>
+						<input class="filters__property-input" id="property-1" type="text" placeholder="Свойство1">
+					</div>
+					<div class="filters__property">
+						<label for="property-2" class="filters__property-label">Свойство2:</label>
+						<input class="filters__property-input" id="property-2" type="text" placeholder="Свойство2">
+					</div>
+					<div class="filters__property">
+						<label for="property-3" class="filters__property-label">Свойство3:</label>
+						<input class="filters__property-input" id="property-3" type="text" placeholder="Свойство3">
+					</div>
+				</div>
+			</div>
+			<div class="add-user-form">
+				<div class="add-user-form__properties">
+					<div class="add-user-form__property">
+						<label for="property-1" class="add-user-form__property-label">Свойство1:</label>
+						<input class="add-user-form__property-input" id="property-1" type="text" placeholder="Свойство1">
+					</div>
+				</div>
+				<div class="add-user-form__buttons">
+					<button class="add-user-form__cancel">Отмена</button>
+					<button class="add-user-form__ok">Сохранить</button>
+				</div>
+			</div>
+		</div>
+		<div class="show-filters">
+			<div class="show-filters__hamburger">
+				<span class="show-filters__hamburger-line--1"></span>
+				<span class="show-filters__hamburger-line--2"></span>
+				<span class="show-filters__hamburger-line--3"></span>
+			</div>
+			<p class="show-filters__text">Фильтры</p>
+		</div>
+		<div class="cards">
+			<div class="cards__list">
+				<div class="card">
+					<div class="card__properties">
+						<div class="card__property">
+							Электронный адрес:
+							<!-- <span class="card__property-value">
+								Значение
+							</span> -->
+							<div class="card__property-edit">
+								<input type="text" class="card__property-edit--input">
+								<button class="card__property-edit--cancel">Отмена</button>
+								<button class="card__property-edit--ok">ОК</button>
+							</div>
+						</div>
+						<div class="card__property">Пароль:</div>
+						<div class="card__property">Телефон:</div>
+						<div class="card__property">ФИО:</div>
+						<div class="card__property">Статус пользователя:</div>
+						<div class="card__property">Дата создания:</div>
+						<div class="card__property">Дата последнего изменения:</div>
+					</div>
+					<span class="card__delete" title="Удалить"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

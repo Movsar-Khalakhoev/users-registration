@@ -1,0 +1,317 @@
+
+// cmp - component
+// hrz - horizontal
+// vrt - vertical
+// p - padding
+// pl - padding-left
+// m - margin
+// w - width
+// h - height
+// t - top
+// b - bottom
+// r - right
+// l - left
+// c - color
+// mb - margin-bottom
+// mt - margin-top
+// bdrs - border-radius
+// trs - transition
+
+$sidebar_cmp_w: 300px // Ширина компонента Filters
+$sidebar_cmp_w_1210: 250px // Ширина компонента Filters на <1210px
+$sidebar_cmp_w_992: 200px // Ширина компонента Filters на <992px
+$sidebar_cmp_w_768: 300px // Ширина компонента Filters на <768px
+$sidebar_cmp_hrz_p: 20px // Горизонтальные внутренние отступы в компоненте Filters
+$sidebar_cmp_vrt_p: 20px // Вертикальные внутренние отступы в компоненте Filters
+$sidebar_cmp_vrt_p_768: 10px // Вертикальные внутренние отступы в компоненте Filters на <768px
+$filters_add-user_size: 40px // Ширина и высота кнопки добавления пользователя в компоненте Filters
+$filters_add-user_c: grey // Цвет кнопки добавления пользователя в компоненте Filters
+$filters_select_mt: 20px // Отступ между элементом select и кнопкой добавления пользователя в компоненте Filters
+$filters_select_mb: 40px // Отступ между элементом select и списком активных свойств в компоненте Filters
+$filters_property_mb: 20px // Отступ между активными свойствами в компоненте Filters
+$filters_property_label_mb: 10px // Отступ между надписью и инпутом в активном свойстве в компоненте Filters
+$filters_property_input_h: 30px // Высота инпута в активном свойстве в компоненте Filters
+$filters_property_input_pl: 10px // Левый внутренний отступ инпута в активном свойстве в компоненте Filters
+
+$add_user_form_mt: 20px // Отступ сверху в компоненте addUserForm
+$add_user_form_property_mb: 20px // Отступ между активными свойствами в компоненте addUserFrom
+$add_user_form_property_label_mb: 10px // Отступ между надписью и инпутом в активном свойстве в компоненте addUserFrom
+$add_user_form_property_input_h: 30px // Высота инпута в активном свойстве в компоненте addUserFrom
+$add_user_form_property_input_pl: 10px // Левый внутренний отступ инпута в активном свойстве в компоненте addUserFrom
+$add_user_form_buttons_mt: 20px // Отступ между свойствами и кнопками в компоненте addUserForm
+
+$cards_cmp_w: 800px // Ширина компонента Cards
+$cards_cmp_w_1210: 700px // Ширина компонента Cards на <1210px
+$cards_cmp_w_992: 500px // Ширина компонента Cards на <992px
+$cards_cmp_w_768: 100% // Ширина компонента Cards на <768px
+$cards_cmp_hrz_p: 20px // Горизонтальные внутренние отступы в компоненте Cards
+$cards_cmp_vrt_p: 30px // Вертикальные внутренние отступы в компоненте Cards
+$cards_cmp_vrt_p_768: 55px // Вертикальные внутренние отступы в компоненте Cards на <768px
+
+$card_mb: 20px // Отступ между карточками в комопненте Card
+$card_hrz_p: 20px // Горизонтальные внутренние отступы в компоненте Card
+$card_vrt_p: 10px // Вертильканые внутренние отступы в компоненте Card
+$card_property_mb: 10px // Отступы между свойствами в компоненте Card
+$card_delete_size: 30px // Ширина и высота кнопки удаления пользователя в компоненте Card
+$card_delete_t: 20px // Отступ сверху кнопки удаления пользователя в компоненте Card
+$card_delete_r: 20px // Отступ справа кнопки удаления пользователя в компоненте Card
+$card_delete_c: grey
+$card_edit_mb: 5px // Отступ между кнопками и инпутом в форме редактирования свойтсва в компоненте Card
+
+$container_cmp_m: 10px // Ширина компонента Container
+
+$show_filters_cmp_t: 15px // Отступ сверху кнопки открытия фильтров в компоненте Container
+$show_filters_cmp_l: 20px // Отступ слева кнопки открытия фильтров в компоненте Container
+$hamburger_cmp_size: 30px // Ширина и высота гамбургера в компоненте Container
+
+
+
+$main_bdrs: 5px // Основное скругление
+
+$main_trs: .3s // Основная скорость анимации
+
+$main_color: whitesmoke // Основной цвет
+$main_color_darken: darken($main_color, 10%)
+$main_color_darken_extra: darken($main_color_darken, 10%)
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: sans-serif
+
+body
+  background-color: #c1c1c1
+
+
+.container
+  display: flex
+  justify-content: space-between
+  height: calc(100vh - #{$container_cmp_m}*2)
+  width: calc(#{$sidebar_cmp_w}  + #{$cards_cmp_w} + #{$container_cmp_m})
+  margin: $container_cmp_m auto
+
+.sidebar
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  padding: $sidebar_cmp_vrt_p $sidebar_cmp_hrz_p
+  width: $sidebar_cmp_w
+  border-radius: $main_bdrs
+  background-color: $main_color
+  transition: transform $main_trs
+  &-active
+    transform: translateX(0) !important
+  &__add-user-btn
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: $filters_add-user_size
+    width: $filters_add-user_size
+    border: 1px solid $filters_add-user_c
+    border-radius: $main_bdrs
+    cursor: pointer
+    &:hover
+      border-color: darken($filters_add-user_c, 20%)
+      &::before, &::after
+        background-color: darken($filters_add-user_c, 20%)
+    &::before, &::after
+      position: absolute
+      content: ''
+      width: 85%
+      height: 15%
+      background-color: $filters_add-user_c
+    &::before
+      transform: rotate(90deg)
+
+
+
+.filters
+  display: none
+  width: 100%
+  &__select
+    width: 100%
+    margin-top: $filters_select_mt
+    margin-bottom: $filters_select_mb
+  &__active
+    width: 100%
+    max-height: 500px
+    overflow: auto
+  &__property
+    display: flex
+    flex-direction: column
+    margin-bottom: 	$filters_property_mb
+    &:last-child
+      margin-bottom: 0
+    &-label
+      margin-bottom: $filters_property_label_mb
+    &-input
+      height: $filters_property_input_h
+      padding-left: $filters_property_input_pl
+
+.add-user-form
+  width: 100%
+  margin-top: $add_user_form_mt
+  &__property
+    display: flex
+    flex-direction: column
+    margin-bottom: 	$filters_property_mb
+    &:last-child
+      margin-bottom: 0
+    &-label
+      margin-bottom: $filters_property_label_mb
+    &-input
+      height: $filters_property_input_h
+      padding-left: $filters_property_input_pl
+  &__buttons
+    margin-top: $add_user_form_buttons_mt
+
+.show-filters
+  display: none
+  align-items: center
+  position: absolute
+  top: $show_filters_cmp_t
+  left: $show_filters_cmp_l
+  z-index: 3
+  cursor: pointer
+  &__hamburger
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    width: $hamburger_cmp_size
+    height: $hamburger_cmp_size
+
+    &-line
+      &--1, &--2, &--3
+        width: 100%
+        height: 20%
+        background-color: #000
+        border-radius: 3px
+        transition: all .3s
+      &--1
+        position: absolute
+        top: 0
+      &--3
+        position: absolute
+        bottom: 0
+    &-active
+			.show-filters__hamburger-line
+      &--2
+        width: 0
+        opacity: 0
+      &--1
+        transform: translateY(200%) rotate(45deg)
+      &--3
+        transform: translateY(-200%) rotate(-45deg)
+
+
+.cards
+  width: $cards_cmp_w
+  border-radius: $main_bdrs
+  background-color: $main_color
+  padding: $cards_cmp_vrt_p $cards_cmp_hrz_p
+  overflow: auto
+  &__list
+    height: 100%
+    overflow: auto
+
+.card
+  position: relative
+  padding: $card_vrt_p $card_hrz_p
+  border: 1px solid #000
+  margin-bottom: $card_mb
+  border-radius: $main_bdrs
+  background-color: $main_color_darken
+  &:last-child
+    margin-bottom: 0
+  &:hover
+    background-color: $main_color_darken_extra
+  &__property
+    margin-bottom: $card_property_mb
+    &:last-child
+      margin-bottom: 0
+    &-edit
+      display: inline-block
+  &__delete
+    display: flex
+    align-items: center
+    justify-content: center
+    height: $card_delete_size
+    width: $card_delete_size
+    top: $card_delete_t
+    right: $card_delete_r
+    position: absolute
+    border: 1px solid $card_delete_c
+    border-radius: $main_bdrs
+    cursor: pointer
+    &:hover
+      border-color: darken($card_delete_c, 20%)
+      &::before, &::after
+        background-color: darken($card_delete_c, 20%)
+    &::before, &::after
+      position: absolute
+      content: ''
+      width: 100%
+      height: 15%
+      background-color: $card_delete_c
+    &::before
+      transform: rotate(45deg)
+    &::after
+      transform: rotate(-45deg)
+
+
+@media (max-width: 1210px)
+  .container
+    width: calc(#{$sidebar_cmp_w_1210}  + #{$cards_cmp_w_1210} + #{$container_cmp_m})
+
+  .cards
+    width: $cards_cmp_w_1210
+
+  .sidebar
+    width: $sidebar_cmp_w_1210
+
+@media (max-width: 992px)
+  .container
+    width: calc(#{$sidebar_cmp_w_992}  + #{$cards_cmp_w_992} + #{$container_cmp_m})
+
+  .cards
+    width: $cards_cmp_w_992
+
+  .sidebar
+    width: $sidebar_cmp_w_992
+
+  .card
+    &__property
+      &-edit
+        display: block
+        padding-right: $card_delete_size
+        &--input
+          margin-bottom: $card_edit_mb
+
+@media (max-width: 768px)
+  .container
+    position: relative
+    width: calc(#{$cards_cmp_w_768} - #{$container_cmp_m}*2)
+    overflow: hidden
+
+  .show-filters
+    display: flex
+
+  .sidebar
+    align-items: flex-end
+    position: absolute
+    height: 100%
+    width: $sidebar_cmp_w_768
+    border-right: 1px solid #000
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+    transform: translateX(-100%)
+    z-index: 2
+    padding: $sidebar_cmp_vrt_p_768 $sidebar_cmp_hrz_p
+
+
+  .cards
+    width: $cards_cmp_w_768
+    padding: $cards_cmp_vrt_p_768 $cards_cmp_hrz_p
