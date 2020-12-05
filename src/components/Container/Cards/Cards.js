@@ -2,8 +2,9 @@ import React from 'react'
 import styles from './Cards.module.sass'
 import Card from './Card/Card'
 import {connect} from 'react-redux'
+import {deleteUser} from '../../../redux/actions/users'
 
-const Cards = ({users, properties}) => {
+const Cards = ({users, properties, deleteUser}) => {
   return (
     <div className={styles.cards}>
       <div className={styles.show_filters}>
@@ -21,6 +22,7 @@ const Cards = ({users, properties}) => {
             cardIndex={index}
             user={user}
             properties={properties}
+            onClick={() => deleteUser(index)}
           />)
         }
       </div>
@@ -35,4 +37,10 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps)(Cards)
+function mapDispatchToProps(dispatch) {
+  return {
+    deleteUser: index => dispatch(deleteUser(index))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cards)

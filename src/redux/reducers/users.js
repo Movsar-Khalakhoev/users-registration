@@ -1,4 +1,4 @@
-import {ADD_USER, UPDATE_PROPERTY, UPDATE_USERS_LIST} from '../actions/actionTypes'
+import {ADD_USER, DELETE_USER, UPDATE_PROPERTY, UPDATE_USERS_LIST} from '../actions/actionTypes'
 
 const initialState = {
   usersList: JSON.parse(localStorage.getItem('usersList')) || [],
@@ -50,6 +50,15 @@ export default function usersReducer(state = initialState, action) {
       usersList.push(action.user)
       console.log(usersList)
       localStorage.setItem('usersList', JSON.stringify(usersList))
+      return {
+        ...state,
+        usersList
+      }
+    case DELETE_USER:
+      usersList = [...state.usersList]
+      usersList.splice(action.index, 1)
+      localStorage.setItem('usersList', JSON.stringify(usersList))
+      console.log('deleted')
       return {
         ...state,
         usersList

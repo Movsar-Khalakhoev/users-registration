@@ -4,7 +4,7 @@ import Property from './Property/Property'
 import {connect} from 'react-redux'
 import {updateProperty} from '../../../../redux/actions/users'
 
-const Card = ({user, properties, cardIndex, updateProperty}) => {
+const Card = ({user, properties, cardIndex, updateProperty, onClick}) => {
   const [isEditing, setIsEditing] = useState(null)
   function addEditPropertyForm(index) {
     setIsEditing(index)
@@ -30,7 +30,11 @@ const Card = ({user, properties, cardIndex, updateProperty}) => {
           />)
         }
       </div>
-      <span className={styles.delete} title="Удалить" />
+      <span
+        className={styles.delete}
+        title="Удалить"
+        onClick={onClick}
+      />
     </div>
   )
 }
