@@ -1,0 +1,71 @@
+@import 'src/_styleVariables'
+
+.cards
+  position: relative
+  width: $cards_cmp_w
+  border-radius: $main_bdrs
+  background-color: $main_color
+  padding: $cards_cmp_vrt_p $cards_cmp_hrz_p
+  overflow: auto
+
+.list
+  height: 100%
+  overflow: auto
+
+.show_filters
+  display: none
+  align-items: center
+  position: absolute
+  top: $show_filters_cmp_t
+  left: $show_filters_cmp_l
+  z-index: 3
+  cursor: pointer
+
+.hamburger
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  width: $hamburger_cmp_size
+  height: $hamburger_cmp_size
+  &-active .line
+    &_2
+      width: 0
+      opacity: 0
+    &_1
+      transform: translateY(200%) rotate(45deg)
+    &_3
+      transform: translateY(-200%) rotate(-45deg)
+
+.line
+  &_1, &_2, &_3
+    width: 100%
+    height: 20%
+    background-color: #000
+    border-radius: 3px
+    transition: all .3s
+  &_1
+    position: absolute
+    top: 0
+  &_3
+    position: absolute
+    bottom: 0
+
+.text
+  margin-left: 5px
+
+@media (max-width: 1210px)
+  .cards
+    width: $cards_cmp_w_1210
+
+@media (max-width: 992px)
+  .cards
+    width: $cards_cmp_w_992
+
+@media (max-width: 768px)
+  .cards
+    width: $cards_cmp_w_768
+    padding: $cards_cmp_vrt_p_768 $cards_cmp_hrz_p
+
+  .show_filters
+    display: flex

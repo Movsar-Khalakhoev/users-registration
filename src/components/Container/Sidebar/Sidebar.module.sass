@@ -1,0 +1,58 @@
+@import 'src/_styleVariables'
+
+.sidebar
+  display: flex
+  flex-direction: column
+  align-items: flex-start
+  padding: $sidebar_cmp_vrt_p $sidebar_cmp_hrz_p
+  width: $sidebar_cmp_w
+  border-radius: $main_bdrs
+  background-color: $main_color
+  transition: transform $main_trs
+  &-active
+    transform: translateX(0) !important
+
+
+.add_user_btn
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  height: $filters_add-user_size
+  width: $filters_add-user_size
+  border: 1px solid $filters_add-user_c
+  border-radius: $main_bdrs
+  cursor: pointer
+  &:hover
+    border-color: darken($filters_add-user_c, 20%)
+    &::before, &::after
+      background-color: darken($filters_add-user_c, 20%)
+  &::before, &::after
+    position: absolute
+    content: ''
+    width: 85%
+    height: 15%
+    background-color: $filters_add-user_c
+  &::before
+    transform: rotate(90deg)
+
+@media (max-width: 1210px)
+  .sidebar
+    width: $sidebar_cmp_w_1210
+
+@media (max-width: 992px)
+  .sidebar
+    width: $sidebar_cmp_w_992
+
+@media (max-width: 768px)
+  .sidebar
+    align-items: flex-end
+    position: absolute
+    height: 100%
+    width: $sidebar_cmp_w_768
+    border-right: 1px solid #000
+    border-top-right-radius: 0
+    border-bottom-right-radius: 0
+    transform: translateX(-100%)
+    z-index: 2
+    padding: $sidebar_cmp_vrt_p_768 $sidebar_cmp_hrz_p

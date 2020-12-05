@@ -1,0 +1,26 @@
+@import "src/_styleVariables"
+
+.filters
+  display: none
+  width: 100%
+  &__select
+    width: 100%
+    margin-top: $filters_select_mt
+    margin-bottom: $filters_select_mb
+  &__active
+    width: 100%
+    max-height: 500px
+    overflow: auto
+
+
+.property
+  display: flex
+  flex-direction: column
+  margin-bottom: 	$filters_property_mb
+  &:last-child
+    margin-bottom: 0
+  &_label
+    margin-bottom: $filters_property_label_mb
+  &_input
+    height: $filters_property_input_h
+    padding-left: $filters_property_input_pl

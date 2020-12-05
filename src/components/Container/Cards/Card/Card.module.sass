@@ -1,0 +1,60 @@
+@import 'src/_styleVariables'
+
+.card
+  position: relative
+  padding: $card_vrt_p $card_hrz_p
+  border: 1px solid #000
+  margin-bottom: $card_mb
+  border-radius: $main_bdrs
+  background-color: $main_color_darken
+  &:last-child
+    margin-bottom: 0
+  &:hover
+    background-color: $main_color_darken_extra
+
+.property
+  margin-bottom: $card_property_mb
+  &:last-child
+    margin-bottom: 0
+  &_value
+    margin-left: $card_property_m
+  &_edit
+    display: inline-block
+    margin-left: $card_property_m
+    button
+      margin-left: $card_edit_m
+
+.delete
+  display: flex
+  align-items: center
+  justify-content: center
+  height: $card_delete_size
+  width: $card_delete_size
+  top: $card_delete_t
+  right: $card_delete_r
+  position: absolute
+  border: 1px solid $card_delete_c
+  border-radius: $main_bdrs
+  cursor: pointer
+  &:hover
+    border-color: darken($card_delete_c, 20%)
+    &::before, &::after
+      background-color: darken($card_delete_c, 20%)
+  &::before, &::after
+    position: absolute
+    content: ''
+    width: 100%
+    height: 15%
+    background-color: $card_delete_c
+  &::before
+    transform: rotate(45deg)
+  &::after
+    transform: rotate(-45deg)
+
+@media (max-width: 992px)
+  .property
+    &_edit
+      display: block
+      padding-right: $card_delete_size
+      &_input
+        margin-bottom: $card_edit_mb

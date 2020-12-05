@@ -1,0 +1,22 @@
+@import "src/_styleVariables"
+
+.container
+  display: flex
+  justify-content: space-between
+  height: calc(100vh - #{$container_cmp_m}*2)
+  width: calc(#{$sidebar_cmp_w}  + #{$cards_cmp_w} + #{$container_cmp_m})
+  margin: $container_cmp_m auto
+
+@media (max-width: 1210px)
+  .container
+    width: calc(#{$sidebar_cmp_w_1210}  + #{$cards_cmp_w_1210} + #{$container_cmp_m})
+
+@media (max-width: 992px)
+  .container
+    width: calc(#{$sidebar_cmp_w_992}  + #{$cards_cmp_w_992} + #{$container_cmp_m})
+
+@media (max-width: 768px)
+  .container
+    position: relative
+    width: calc(#{$cards_cmp_w_768} - #{$container_cmp_m}*2)
+    overflow: hidden
