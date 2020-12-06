@@ -1,32 +1,29 @@
 import React, {useState} from 'react'
 import styles from './Card.module.sass'
 import Property from './Property/Property'
-import {connect} from 'react-redux'
-import {updateProperty} from '../../../../redux/actions/users'
 
-const Card = ({user, properties, cardIndex, updateProperty, onClick}) => {
+const Card = props => {
+  const {
+    user,
+    properties,
+    cardIndex,
+    onClick
+  } = props
+
   const [isEditing, setIsEditing] = useState(null)
-  function addEditPropertyForm(index) {
-    setIsEditing(index)
-  }
-  function changeInputValue(prevValue, newValue, property) {
-    setIsEditing(null)
-    if (prevValue === newValue) return
-    updateProperty(cardIndex, property, newValue)
-  }
-
   return (
     <div className={styles.card}>
       <div>
         { Object.keys(user).map((prop, index) =>
           <Property
-            key={index}
-            property={properties[prop]}
-            value={user[prop]}
+            key={prop}
+            propertyValue={prop}
+            propertyLabel={properties[prop]}
+            cardIndex={cardIndex}
+            propertyIndex={index}
+            setIsEditing={setIsEditing}
             isEditing={isEditing === index}
-            onEditClick={() => addEditPropertyForm(index)}
-            onCancelClick={() => setIsEditing(null)}
-            onOkClick={value => changeInputValue(user[prop], value, prop)}
+            value={user[prop]}
           />)
         }
       </div>
@@ -39,10 +36,4 @@ const Card = ({user, properties, cardIndex, updateProperty, onClick}) => {
   )
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    updateProperty: (index, property, value) => dispatch(updateProperty(index, property, value))
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Card)
+export default Card

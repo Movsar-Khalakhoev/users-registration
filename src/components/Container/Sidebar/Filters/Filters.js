@@ -4,16 +4,17 @@ import Select from 'react-select'
 import {connect} from 'react-redux'
 import {updateUsersList} from '../../../../redux/actions/users'
 
-const options = properties => {
-  let options =  new Array(Object.keys(properties).length).fill('')
-    Object.keys(properties).map((property, index) => {
-      options[index] = {value: property, label: properties[property]}
+const options = (properties, systemProperties) => {
+  let options =  []
+    Object.keys(properties).forEach((property, index) => {
+      if (!systemProperties.includes(property)) {
+        options.push({value: property, label: properties[property]})
+      }
     })
-
   return options
 }
 
-const Filters = ({properties, getFilteredUsers}) => {
+const Filters = ({properties, systemProperties, getFilteredUsers, selectProperties}) => {
   const [filters, setFilters] = useState({})
   let timeout
 
@@ -32,17 +33,17 @@ const Filters = ({properties, getFilteredUsers}) => {
     getFilteredUsers(activeFilters)
   }
 
-  function updateFilterValue(event, filter) {
+  function updateFilterValue(value, filter) {
     clearTimeout(timeout)
     timeout = setTimeout(() => {
 
       setFilters({
         ...filters,
-        [filter]: event.target.value
+        [filter]: value
       })
       getFilteredUsers({
         ...filters,
-        [filter]: event.target.value
+        [filter]: value
       })
     }, 500)
   }
@@ -50,21 +51,28 @@ const Filters = ({properties, getFilteredUsers}) => {
   return (
     <div className={styles.filters}>
       <Select
-        options={options(properties)}
+        options={options(properties, systemProperties)}
         isMulti
         onChange={updateFiltersList}
       />
       <div className={styles.filters__active}>
         {
           Object.keys(filters).map((filter, index) => (
-            <div className={styles.property} key={index}>
+            <div className={styles.property} key={filter}>
               <label className={styles.property_label}>{properties[filter]}:</label>
-              <input
-                className={styles.property_input}
-                type="text"
-                placeholder={properties[filter]}
-                onChange={event => updateFilterValue(event, filter)}
-              />
+              {
+                !selectProperties[filter]
+                  ? <input
+                      className={styles.property_input}
+                      type="text"
+                      placeholder={properties[filter]}
+                      onChange={event => updateFilterValue(event.target.value, filter)}
+                    />
+                  : <Select
+                    options={selectProperties[filter]}
+                    onChange={action => updateFilterValue(action.value, filter)}
+                  />
+              }
             </div>
           ))
         }
@@ -75,7 +83,9 @@ const Filters = ({properties, getFilteredUsers}) => {
 
 function mapStateToProps(state) {
   return {
-    properties: state.users.properties
+    properties: state.users.properties,
+    systemProperties: state.users.systemProperties,
+    selectProperties: state.users.selectProperties
   }
 }
 

@@ -8,13 +8,15 @@ const Sidebar = () => {
   const [component, setComponent] = useState('filters')
   return (
     <div className={styles.sidebar}>
-      <span
-        className={styles.add_user_btn}
-        onClick={() => setComponent('add-user-form')}
-      />
       {
         component === 'filters'
-          ? <Filters />
+          ? <>
+              <span
+                className={styles.add_user_btn}
+                onClick={() => setComponent('add-user-form')}
+              />
+              <Filters />
+            </>
           : <AddUserForm closeForm={() => setComponent('filters')}/>
       }
     </div>

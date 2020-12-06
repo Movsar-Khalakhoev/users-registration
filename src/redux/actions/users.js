@@ -1,6 +1,6 @@
 import {ADD_USER, DELETE_USER, UPDATE_PROPERTY, UPDATE_USERS_LIST} from './actionTypes'
 
-export function updateProperty(index, property, value) {
+export function updatePropertyAction(index, property, value) {
   return {
     type: UPDATE_PROPERTY,
     index, property, value

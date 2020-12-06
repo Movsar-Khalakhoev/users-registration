@@ -18,7 +18,7 @@ const Cards = ({users, properties, deleteUser}) => {
       <div className={styles.list}>
         { users.map((user, index) =>
           <Card
-            key={index}
+            key={user.createDate}
             cardIndex={index}
             user={user}
             properties={properties}
