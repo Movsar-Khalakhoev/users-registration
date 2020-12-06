@@ -1,11 +1,24 @@
 @import "src/_styleVariables"
 
 .container
+  position: relative
   display: flex
   justify-content: space-between
   height: calc(100vh - #{$container_cmp_m}*2)
   width: calc(#{$sidebar_cmp_w}  + #{$cards_cmp_w} + #{$container_cmp_m})
   margin: $container_cmp_m auto
+
+.show_filters
+  display: none
+  align-items: center
+  position: absolute
+  top: $show_filters_cmp_t
+  left: $show_filters_cmp_l
+  z-index: 3
+  cursor: pointer
+
+.text
+  margin-left: 5px
 
 @media (max-width: 1210px)
   .container
@@ -20,3 +33,6 @@
     position: relative
     width: calc(#{$cards_cmp_w_768} - #{$container_cmp_m}*2)
     overflow: hidden
+
+  .show_filters
+    display: flex

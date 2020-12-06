@@ -9,7 +9,7 @@
   border-radius: $main_bdrs
   background-color: $main_color
   transition: transform $main_trs
-  &-active
+  &_active
     transform: translateX(0) !important
 
 
@@ -22,6 +22,7 @@
   width: $filters_add-user_size
   border: 1px solid $filters_add-user_c
   border-radius: $main_bdrs
+  margin-bottom: $filters_add-user_mb
   cursor: pointer
   &:hover
     border-color: darken($filters_add-user_c, 20%)

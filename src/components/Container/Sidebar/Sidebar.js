@@ -4,10 +4,10 @@ import Filters from './Filters/Filters'
 import AddUserForm from './addUserForm/addUserForm'
 import {connect} from 'react-redux'
 
-const Sidebar = () => {
+const Sidebar = ({isActive}) => {
   const [component, setComponent] = useState('filters')
   return (
-    <div className={styles.sidebar}>
+    <div className={`${styles.sidebar} ${isActive ? styles.sidebar_active : ''}`}>
       {
         component === 'filters'
           ? <>

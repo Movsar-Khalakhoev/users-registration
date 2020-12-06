@@ -6,6 +6,11 @@
 .pnp.js
 yarn.lock
 .eslintcache
+firebase-debug.log
+.firebase
+.firebaserc
+firebase.json
+
 /.idea
 
 # testing

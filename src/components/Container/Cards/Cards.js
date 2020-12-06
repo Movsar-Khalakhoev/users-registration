@@ -7,14 +7,6 @@ import {deleteUser} from '../../../redux/actions/users'
 const Cards = ({users, properties, deleteUser}) => {
   return (
     <div className={styles.cards}>
-      <div className={styles.show_filters}>
-        <div className={styles.hamburger}>
-          <span className={styles.line_1} />
-          <span className={styles.line_2} />
-          <span className={styles.line_3} />
-        </div>
-        <p className={styles.text}>Фильтры</p>
-      </div>
       <div className={styles.list}>
         { users.map((user, index) =>
           <Card
